@@ -1,0 +1,764 @@
+/* Root */
+:root {
+    --primary-color: #3168ff;
+    --accent-color: #7049ff;
+    --background-color: #1f1f1f;
+    --text-color: #f0f0f0;
+    --menu-bg-color: #1f1f1f;
+    --hover-bg-color: rgba(68, 68, 68, 0.7);
+    --hover-shadow-color: rgba(112, 73, 255, 0.25);
+    --border-color: rgba(68, 68, 68, 0.5);
+    --focus-outline-color: rgba(49, 104, 255, 0.6);
+    --shadow-lg: 8px 0 20px rgba(0, 0, 0, 0.5);
+    --transition-slow: 0.6s ease;
+    --transition-slow-ease-in-out: 0.3s ease-in-out;
+    --transition-medium: 0.4s ease;
+    --transition-fast: 0.3s ease;
+    --button-bg-color: #2c2c2c;
+    --button-hover-bg-color: #3b3b3b;
+    --button-active-bg-color: #4a4a4a;
+    --button-text-color: #f0f0f0;
+    --button-border-color: #3a3a3a;
+    --feedback-bg-correct: #4caf50;
+    --feedback-bg-incorrect: #f44336;
+    --feedback-border-color-correct: #388e3c;
+    --feedback-border-color-incorrect: #d32f2f;
+    --feedback-border-color-warning: #d0d32f;
+    --feedback-text-color: #fff;
+    --font-primary: 'Poppins', sans-serif;
+}
+
+/* Body */
+body {
+    font-family: var(--font-primary);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow-x: hidden;
+    transition: background-color var(--transition-slow);
+}
+
+.chatgpt-icon-button {
+    position: fixed;
+    bottom: 20px; /* Pas aan naar wens */
+    right: 20px;  /* Pas aan naar wens */
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: #fff;
+    width: 60px; /* Afmetingen van de knop */
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    text-decoration: none; /* Verwijder onderlijn */
+}
+
+.chatgpt-icon-button i {
+    font-size: 1.5rem; /* Pas de grootte van het icoon aan */
+}
+
+/* Hover effect voor de knop */
+.chatgpt-icon-button:hover {
+    transform: scale(1.1); /* Grotere knop bij hover */
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+
+
+/* Compactere glazen morphisme effect voor de to-do container */
+.todo-container {
+    position: fixed;
+    bottom: 80px;
+    height: 450px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.1); /* Transparante achtergrond voor glazen effect */
+    backdrop-filter: blur(10px); /* Blur effect voor glas-achtig uiterlijk */
+    border-radius: 16px; /* Iets kleinere hoeken */
+    box-shadow: 0 6px 28px rgba(0, 0, 0, 0.2); /* Subtiele schaduw */
+    padding: 20px;
+    width: 300px; /* Compactere breedte */
+    border: 1px solid rgba(255, 255, 255, 0.15); /* Rand subtieler */
+    z-index: 1000;
+    transition: transform var(--transition-medium), opacity var(--transition-medium);
+    opacity: 0.92; /* Lichte transparantie voor een modern effect */
+}
+
+/* Compactere titel van de To-Do lijst */
+.todo-container h3 {
+    margin: 0 0 15px;
+    font-weight: 700;
+    font-size: 1.4rem; /* Kleinere titel */
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1.2px; /* Iets minder brede letterafstand */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 10px; /* Minder padding */
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color)); 
+    background-clip: text;
+    -webkit-text-fill-color: transparent; 
+}
+
+/* Compactere lijststijl */
+.todo-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.todo-list li {
+    font-family: 'Open Sans', sans-serif;
+    color: rgba(255, 255, 255, 0.85); 
+    padding: 12px 16px; /* Minder padding per item */
+    border-radius: 10px;
+    margin-bottom: 10px; /* Kleinere marges tussen items */
+    background-color: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(6px); /* Iets minder blur */
+    transition: background-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12); /* Minder diepe schaduw */
+}
+
+/* Compact hover effect */
+.todo-list li:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px); /* Minder verplaatsing */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* Subtiele schaduw bij hover */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Compactere plusknop */
+.add-todo-btn {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: #fff;
+    width: 50px; /* Kleinere plusknop */
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25); 
+    cursor: pointer;
+    transition: background-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+/* Hover effect voor de plusknop */
+.add-todo-btn:hover {
+    transform: translateY(-4px); 
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35); 
+}
+
+
+/* Container */
+.color-controls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+/* Language Selector as Icon */
+.language-selector {
+    position: relative;
+    background-color: #555;
+    color: #fff; /* Tekstkleur is al wit */
+    border: 2px solid var(--primary-color);
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color var(--transition-slow), transform var(--transition-slow), box-shadow var(--transition-slow), border-color var(--transition-slow);
+}
+
+.language-selector i {
+    pointer-events: none;
+}
+
+/* Hide the select element by default */
+#language-selector {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 50%;
+    left: calc(-100% - 10px); /* Adjust the select to the left */
+    transform: translateY(-50%);
+    background-color: #555;
+    border: 2px solid var(--primary-color);
+    border-radius: 12px;
+    padding: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: opacity var(--transition-slow), visibility var(--transition-slow), transform var(--transition-slow);
+    width: 150px;
+    color: #fff; /* Voeg hier ook kleur wit toe, als het nodig is voor de select */
+}
+
+/* Show the select element on hover, and position it to the left of the button */
+.language-selector:hover #language-selector {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) translateX(-100px);
+}
+
+/* Hover effect for the language selector icon */
+.language-selector:hover {
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    border-color: var(--primary-color);
+    transform: scale(1.05);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+}
+
+
+/* RGB Button - Modernere uitstraling */
+.rgb-button {
+    background-color: #555;
+    color: #fff;
+    border: 2px solid var(--primary-color);
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    transition: background-color var(--transition-slow), transform var(--transition-slow), box-shadow var(--transition-slow), border-color var(--transition-slow);
+}
+
+/* Verbeterde hover voor de RGB-button */
+.rgb-button:hover {
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    border-color: var(--primary-color);
+    transform: scale(1.05);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+}
+
+/* Kleurkiezer zonder binnenlijn */
+#color-picker {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 50%;
+    left: calc(-100% + 10px);
+    transform: translateY(-50%);
+    background-color: #222;
+    border: 2px solid var(--primary-color);
+    border-radius: 12px;
+    padding: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: opacity var(--transition-slow), visibility var(--transition-slow), transform var(--transition-slow);
+    width: 40px;
+    height: 40px;
+}
+
+/* Langzamere hover-uit effect */
+.rgb-button:hover #color-picker {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) translateX(-5px);
+}
+
+/* Reset Button - Modernere uitstraling */
+.reset-btn {
+    background-color: #555;
+    color: #fff;
+    border: 2px solid var(--primary-color);
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color var(--transition-slow), transform var(--transition-slow), box-shadow var(--transition-slow), border-color var(--transition-slow);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.reset-btn:hover {
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    border-color: var(--primary-color);
+    transform: scale(1.05);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+}
+
+/* Divider - visuele verbinding tussen RGB en Reset */
+.divider {
+    width: 60%;
+    height: 2px;
+    background-color: var(--primary-color);
+    margin: 5px 0;
+    border-radius: 1px;
+}
+
+
+
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .color-controls {
+        top: 10px;
+        right: 10px;
+        gap: 5px;
+    }
+
+    .rgb-button, .reset-btn {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Side Menu */
+.menu-container {
+    position: relative;
+}
+
+.side-menu {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 65px;
+    height: 80vh;
+    background: linear-gradient(145deg, #1a1a1a, #2c2c2c);
+    overflow: hidden;
+    transition: width var(--transition-slow), opacity var(--transition-slow), box-shadow var(--transition-slow);
+    z-index: 1000;
+    box-shadow: var(--shadow-lg);
+    border-radius: 0 16px 16px 0;
+    opacity: 1;
+    will-change: width, box-shadow;
+}
+
+.menu-toggle {
+    color: var(--accent-color);
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    cursor: pointer;
+    z-index: 2000;
+    transition: color var(--transition-fast);
+}
+
+.menu-toggle:hover {
+    color: #fff;
+}
+
+.menu-toggle i {
+    will-change: opacity, transform, color;
+    position: absolute;
+    transition: opacity var(--transition-fast), transform var(--transition-fast);
+    font-size: 2rem;
+}
+
+.menu-toggle .fa-ellipsis-h {
+    opacity: 1;
+}
+
+.menu-toggle .fa-xmark {
+    opacity: 0;
+}
+
+.menu-toggle.open .fa-ellipsis-h {
+    opacity: 0;
+}
+
+.menu-toggle.open .fa-xmark {
+    opacity: 1;
+}
+
+.menu-toggle:hover i {
+    transform: scale(1.15) rotate(-8deg);
+}
+
+.menu-container:hover .side-menu, .side-menu.is-open {
+    width: 320px;
+}
+
+.side-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    padding-top: 60px; /* Ensure items are not hidden behind the toggle button */
+}
+
+.side-menu li {
+    border-bottom: 1px solid var(--border-color);
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    transition: background-color var(--transition-fast), padding-left var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 6px;
+    position: relative;
+}
+
+.side-menu li i {
+    margin-right: 12px;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    transition: color var(--transition-fast), transform var(--transition-fast);
+    min-width: 30px;
+}
+
+.side-menu .menu-text {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-medium), visibility var(--transition-medium);
+    white-space: nowrap;
+    margin-left: 8px;
+}
+
+.menu-container:hover .side-menu .menu-text, .side-menu.is-open .menu-text {
+    opacity: 1;
+    visibility: visible;
+}
+
+.side-menu li:hover {
+    background-color: var(--hover-bg-color);
+    padding-left: 30px;
+    color: #fff;
+    box-shadow: 0 4px 12px var(--hover-shadow-color);
+}
+
+.side-menu li:hover i {
+    color: var(--accent-color);
+    transform: scale(1.25) rotate(-5deg);
+}
+
+.menu-toggle:focus, .side-menu li:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--focus-outline-color);
+}
+
+/* Main Content */
+.content-container {
+    text-align: center;
+    color: var(--text-color);
+    max-width: 1000px;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 40px); /* Adjust for any padding/margins */
+}
+
+#exercise-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+#category-title {
+    margin: 0 0 15px;
+    font-weight: 700;
+    font-size: 3rem; /* Kleinere titel */
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1.2px; /* Iets minder brede letterafstand */
+    transition: transform 0.3s ease;
+    padding-bottom: 10px; /* Minder padding */
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color)); 
+    background-clip: text;
+    -webkit-text-fill-color: transparent; 
+}
+
+#category-title:hover {
+    transform: scale(1.05);
+}
+
+#exercise-container {
+    background: #2c2c2c;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+    width: 100%;
+    max-width: 800px;
+    position: relative;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    margin-top: 20px; /* Space for feedback above */
+}
+
+/* Toepassen op exercise container */
+#exercise-container.animate-in {
+    animation: slideIn 0.5s ease forwards;
+}
+
+#exercise-container.animate-out {
+    animation: slideOut 0.5s ease forwards;
+}
+
+/* Animaties */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
+
+#exercise-text {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-family: var(--font-primary);
+}
+
+/* Moderne styling voor de eindscore */
+#exercise-text p.score-text {
+    color: #fff;                 /* Witte tekst voor "Je score" */
+    font-size: 2.5rem;           /* Grotere, subtiele tekst */
+    font-weight: 400;            /* Niet te vetgedrukt */
+    text-align: center;          /* Gecentreerde tekst */
+    margin-top: 20px;            /* Ruimte boven de tekst */
+    opacity: 0;                  /* Onzichtbaar bij het starten */
+    transform: translateY(20px); /* Start iets naar beneden */
+    animation: fadeInSlideUp 0.6s forwards;  /* Vloeiende fade-in en omhoog bewegen */
+}
+
+/* Accentkleur voor de daadwerkelijke score */
+#exercise-text span.score-value {
+    color: var(--accent-color);  /* Kleur voor de score */
+    font-weight: bold;           /* Vetgedrukte score */
+}
+
+/* Animatie voor het binnenkomen van de score */
+@keyframes fadeInSlideUp {
+    to {
+        opacity: 1;              /* Fade-in effect */
+        transform: translateY(0); /* Schuif omhoog naar normale positie */
+    }
+}
+
+/* Optioneel: animatie voor het oplopen van de score */
+@keyframes countUp {
+    from {
+        content: '0';            /* Start bij nul */
+    }
+    to {
+        content: var(--score);   /* Eindigt op de score */
+    }
+}
+
+#options-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Buttons */
+.nav-btn, .option-btn {
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    border: 2px solid var(--button-border-color);
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.option-btn:hover, .nav-btn:hover {
+    background-color: var(--button-hover-bg-color);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+    transform: scale(1.05) translateY(-2px);
+}
+
+.option-btn:active, .nav-btn:active {
+    background-color: var(--button-active-bg-color);
+}
+
+.option-btn:disabled {
+    background-color: #3a3a3a;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.nav-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    background-color: var(--primary-color);
+    border: none;
+    color: var(--button-text-color);
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-btn:hover {
+    background-color: var(--accent-color);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+    transform: scale(1.05) translateY(-2px);
+}
+
+/* Navigation Buttons */
+.navigation-buttons {
+    margin-top: 20px;
+}
+
+/* Next Button */
+#next-btn {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: 2px solid var(--primary-color);
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color var(--transition-medium), transform var(--transition-medium), box-shadow var(--transition-medium);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+#next-btn:hover {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+    transform: scale(1.05);
+}
+
+#next-btn:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+#feedback-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100%);
+    width: 400px; /* Maak de melding iets groter */
+    padding: 15px 20px; /* Grotere padding voor mooiere tekstopmaak */
+    background-color: #2c2c2c;
+    color: #fff;
+    font-size: 1.2rem; /* Iets grotere tekst */
+    border-left: 10px solid; /* Grotere zijlijn */
+    border-radius: 8px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.4s ease, opacity 0.4s ease, visibility 0.4s ease;
+    text-align: center;
+    z-index: 2000;
+}
+
+#feedback-container.correct {
+    border-left-color: var(--feedback-border-color-correct);
+}
+
+#feedback-container.incorrect {
+    border-left-color: var(--feedback-border-color-incorrect);
+}
+
+#feedback-container.warning {
+    border-left-color: var(--feedback-border-color-warning);
+}
+
+#feedback-container.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(20px); /* Slide-in naar beneden */
+}
+
+#feedback-container.hide {
+    transform: translateX(-50%) translateY(-100%); /* Slide-out naar boven */
+    opacity: 0;
+}
+
+/* Voor mooiere tekst */
+#feedback-container .message-text {
+    font-family: var(--font-primary);
+    line-height: 1.5;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Voortgangsbalk container */
+.progress-container {
+    width: 100%;
+    max-width: 800px;
+    background-color: #333;  /* Donkere achtergrondkleur */
+    border-radius: 10px;      /* Afgeronde hoeken */
+    overflow: hidden;
+    height: 12px;             /* Dunne, strakke balk */
+    margin-bottom: 20px;      /* Ruimte onder de balk */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Schaduw voor een diepte-effect */
+}
+
+/* Voortgangsbalk zelf */
+#progress-bar {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--accent-color), var(--primary-color)); /* Kleurverloop */
+    border-radius: 10px;   /* Houdt de balk afgerond */
+    transition: width 0.5s ease;  /* Vloeiende breedte- en kleurverandering */
+    box-shadow: 0 0 10px rgba(112, 73, 255, 0.7), 0 0 20px rgba(49, 104, 255, 0.6); /* Subtiel glow-effect */
+}
+
+/* Overlay styling */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .content-container {
+        padding: 10px;
+    }
+
+    .todo-container {
+        bottom: 20px;
+        width: 95%;
+        right: 10px;
+    }
+}

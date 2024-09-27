@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+
+    <!-- To-Do List -->
+    <div class="todo-container">
+        <h3>To-Do Lijst Voor Site</h3>
+        <ul class="todo-list">
+            <li>Footer met tekst en info over me</li>
+            <li>Meer oefeningen en in symbolen zetten</li>
+            <li>Data opslaan</li>
+            <li>Verschillende talen</li>
+            <li>Mobiele versie en kleinere schermen</li>
+        </ul>
+    </div>
+
+    <div class="color-controls">
+        <div class="language-selector">
+            <i class="fa fa-globe"></i>
+            <select id="language-selector" title="Kies een taal">
+                <option value="nl">Nederlands</option>
+                <option value="en">Engels</option>
+                <option value="fr">Frans</option>
+                <option value="es">Spaans</option>
+                <option value="it">Italiaans</option>
+                <option value="ar">Arabisch</option>
+            </select>
+        </div>
+        <div class="rgb-button">
+            <i class="fa fa-palette"></i>
+            <input type="color" id="color-picker" title="Kies een kleur">
+        </div>
+        <div class="divider"></div>
+        <button id="reset-colors" class="reset-btn">Reset</button>
+    </div>
+    
+    
+    
+        
+     
+    <!-- Side Menu -->
+    <div class="menu-container">
+        <div class="side-menu">
+            <div class="menu-toggle">
+                <i class="fa fa-ellipsis-h"></i>
+                <i class="fa fa-xmark"></i>
+            </div>
+            <ul>
+                <li><i class="fa fa-superscript"></i><span class="menu-text">Machten</span></li>
+                <li><i class="fa fa-equals"></i><span class="menu-text">Vergelijkingen</span></li>
+                <li><i class="fa fa-not-equal"></i><span class="menu-text">Ongelijkheden</span></li>
+                <li><i class="fa fa-times-circle"></i><span class="menu-text">Merkwaardige producten</span></li>
+                <li><i class="fa fa-th"></i><span class="menu-text">Veeltermen</span></li>
+                <li><i class="fa fa-square-root-alt"></i><span class="menu-text">Vierkantswortels</span></li>
+                <li><i class="fa fa-sitemap"></i><span class="menu-text">Ontbinden in factoren</span></li>
+                <li><i class="fa fa-chart-line"></i><span class="menu-text">Eerstegraadsfunctie</span></li>
+            </ul>
+        </div>
+    </div> 
+
+    <a href="https://chat.openai.com" target="_blank" class="chatgpt-icon-button">
+    <i class="fab fa-chatgpt"></i> <!-- Zorg ervoor dat je Font Awesome hebt toegevoegd -->
+</a>
+
+
+    <!-- Main Content -->
+    <div class="content-container">
+        <div id="exercise-wrapper">
+            <div id="category-title"></div>
+            <!-- Voortgangsbalk -->
+            <div class="progress-container">
+                <div id="progress-bar"></div>
+            </div>
+            <div id="exercise-container">
+                <p id="exercise-text"></p>
+                <div id="options-container">
+                    <!-- Keuzeantwoorden worden hier geladen -->
+                </div>
+            </div>
+            <div class="navigation-buttons">
+                <button id="next-btn" class="nav-btn" disabled>Volgende</button>
+                <button id="restart-btn" class="nav-btn" style="display:none;">Herstarten</button>
+            </div>
+        </div>
+
+    <div id="feedback-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
