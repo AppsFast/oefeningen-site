@@ -6,8 +6,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-</head>
+    </head>
 <body>
 
     <!-- To-Do List -->
@@ -27,11 +26,12 @@
             <i class="fa fa-globe"></i>
             <select id="language-selector" title="Kies een taal">
                 <option value="nl">Nederlands</option>
-                <option value="en">Engels</option>
-                <option value="fr">Frans</option>
-                <option value="es">Spaans</option>
-                <option value="it">Italiaans</option>
-                <option value="ar">Arabisch</option>
+                <option value="en">English</option>
+                <option value="fr">Français</option>
+                <option value="es">Español</option>
+                <option value="it">Italiano</option>
+                <option value="ar">عربي</option>
+                <option value="ch">中国人</option>
             </select>
         </div>
         <div class="rgb-button">
@@ -39,7 +39,7 @@
             <input type="color" id="color-picker" title="Kies een kleur">
         </div>
         <div class="divider"></div>
-        <button id="reset-colors" class="reset-btn">Reset</button>
+        <button id="reset-button" class="reset-btn">Reset</button>
     </div>
     
     
@@ -64,11 +64,7 @@
                 <li><i class="fa fa-chart-line"></i><span class="menu-text">Eerstegraadsfunctie</span></li>
             </ul>
         </div>
-    </div> 
-
-    <a href="https://chat.openai.com" target="_blank" class="chatgpt-icon-button">
-    <i class="fab fa-chatgpt"></i> <!-- Zorg ervoor dat je Font Awesome hebt toegevoegd -->
-</a>
+    </div>
 
 
     <!-- Main Content -->
@@ -86,12 +82,63 @@
                 </div>
             </div>
             <div class="navigation-buttons">
-                <button id="next-btn" class="nav-btn" disabled>Volgende</button>
+                <button id="next-btn" class="nav-btn" disabled></button>
                 <button id="restart-btn" class="nav-btn" style="display:none;">Herstarten</button>
             </div>
         </div>
 
     <div id="feedback-container"></div>
+
+
+
+
+<footer class="footer">
+    <div class="container">
+        <span class="copyright">© 2024 <a href="https://wiskundemajeed.xyz/" class="hover-underline">Wiskunde Majeed™</a>. Alle Rechten Voorbehouden.</span>
+        <ul class="footer-menu">
+            <li><a href="#" class="hover-underline" id="about-me-btn">Over Mij</a></li>
+            <li><a href="#" class="hover-underline" id="contact-me-btn">Contacteer Mij</a></li>
+            <li><a href="#" class="hover-underline">Site Ondersteunen</a></li>
+        </ul>
+    </div>
+</footer>
+
+
+
+
+
+
+<!-- Over Mij Overlay -->
+<div id="about-me-overlay" class="overlay hidden">
+    <div class="overlay-content">
+        <button id="close-about-overlay" class="close-btn"><i class="fas fa-times"></i></button>
+        <h2>Over Mij</h2>
+        <p>Hallo, ik ben Majeed. Ik ben gepassioneerd door wiskunde & technologie en heb deze site gemaakt om anderen te helpen wiskunde op een moderne en interactieve manier te leren.</p>
+    </div>
+</div>
+
+
+<!-- Contacteer Mij Overlay -->
+<div id="contact-overlay" class="overlay hidden">
+    <div class="overlay-content">
+        <button id="close-contact-overlay" class="close-btn"><i class="fas fa-times"></i></button>
+        <h2>Contacteer Mij</h2>
+        <p>Neem gerust contact met mij op via e-mail: <strong>contact@wiskundemajeed.xyz</strong></p>
+        <div class="email-container">
+            <input type="text" id="email" value="contact@wiskundemajeed.xyz" readonly>
+            <button id="copy-email" onclick="copyEmail()">
+                <i class="fas fa-copy"></i>
+            </button>
+        </div>
+        <button class="nav-btn" onclick="window.location.href='mailto:contact@wiskundemajeed.xyz'">
+            <i class="fas fa-paper-plane"></i> Openen
+        </button>
+    </div>
+</div>
+    
+    
+    
+    
 
     <script src="script.js"></script>
 </body>
