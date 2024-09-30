@@ -9,12 +9,68 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextBtn = document.getElementById('next-btn');
     const restartBtn = document.getElementById('restart-btn');
     const colorPicker = document.getElementById('color-picker');
-    const resetColorsBtn = document.getElementById('reset-colors');
     const rgbButton = document.querySelector('.rgb-button');
-    const resetButton = document.getElementById('reset-colors');
+    const resetButton = document.getElementById('reset-button');
     const languageSelector = document.getElementById('language-selector');
     const progressBar = document.getElementById('progress-bar');
     const proximityThreshold = 30;
+
+    
+    const aboutMeBtn = document.getElementById('about-me-btn');
+    const aboutMeOverlay = document.getElementById('about-me-overlay');
+    const contactMeBtn = document.getElementById('contact-me-btn');
+    const contactOverlay = document.getElementById('contact-overlay');
+    const closeAboutOverlayBtn = document.getElementById('close-about-overlay');
+    const closeContactOverlayBtn = document.getElementById('close-contact-overlay');
+    
+    const copyEmailBtn = document.getElementById('copy-email');
+
+    aboutMeBtn.addEventListener('click', () => {
+        aboutMeOverlay.classList.add('show');
+    });
+    
+    contactMeBtn.addEventListener('click', () => {
+        contactOverlay.classList.add('show');
+    });
+
+    closeAboutOverlayBtn.addEventListener('click', () => {
+        aboutMeOverlay.classList.remove('show');
+    });
+
+    closeContactOverlayBtn.addEventListener('click', () => {
+        contactOverlay.classList.remove('show');
+    });
+        
+    document.querySelectorAll('.overlay').forEach(overlay => {
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) {
+                overlay.classList.remove('show');
+            }
+        });
+    });    
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            if (aboutMeOverlay.classList.contains('show')) {
+                aboutMeOverlay.classList.remove('show');
+            } else if (contactOverlay.classList.contains('show')) {
+                contactOverlay.classList.remove('show');
+            }
+        }
+    });
+
+    copyEmailBtn.addEventListener('click', () => {
+        const email = document.getElementById('email').textContent;
+        navigator.clipboard.writeText(email).then(() => {
+            alert('E-mail gekopieerd: ' + email);
+        }).catch(err => {
+            console.error('Kan e-mail niet kopiëren: ', err);
+        });
+    });
+
+
+    
+  
 
     let isMenuOpen = false;
     let currentCategory = 'Machten';
@@ -275,35 +331,177 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "Machten",
             nextBtn: "Volgende",
             restartBtn: "Herstarten",
+            aboutMe: "Over Mij",
+            contactMe: "Contacteer Mij",
+            footerRights: "&copy; 2024 Wiskunde Majeed. Alle rechten voorbehouden.",
+            overlayContenth2: "Over Mij",
+            overlayContentp: "Hallo, ik ben Majeed. Ik ben gepassioneerd door wiskunde & technologie en heb deze site gemaakt om anderen te helpen wiskunde op een moderne en interactieve manier te leren.",
+            categories: [
+                "Machten",
+                "Vergelijkingen",
+                "Ongelijkheden",
+                "Merkwaardige producten",
+                "Veeltermen",
+                "Vierkantswortels",
+                "Ontbinden in factoren",
+                "Eerstegraadsfunctie"
+            ]
         },
         "en": {
             title: "Powers",
             nextBtn: "Next",
             restartBtn: "Restart",
+            aboutMe: "About Me",
+            contactMe: "Contact Me",
+            footerRights: "&copy; 2024 Wiskunde Majeed. All rights reserved.",
+            overlayContenth2: "About Me",
+            overlayContentp: "Hello, my name is Majeed. I am passionate about mathematics and technology, and I built this site to help others learn mathematical concepts in a modern and interactive way.",
+            categories: [
+                "Powers",
+                "Equations",
+                "Inequalities",
+                "Remarkable Products",
+                "Polynomials",
+                "Square Roots",
+                "Factorization",
+                "Linear Functions"
+            ]
         },
         "fr": {
             title: "Puissances",
             nextBtn: "Suivant",
             restartBtn: "Redémarrer",
+            aboutMe: "À Propos de Moi",
+            contactMe: "Contactez Moi",
+            footerRights: "&copy; 2024 Wiskunde Majeed. Tous droits réservés.",
+            overlayContenth2: "À Propos de Moi",
+            overlayContentp: "Bonjour, je m'appelle Majeed. Je suis passionné par les mathématiques et la technologie, et j'ai construit ce site pour aider les autres à apprendre des concepts mathématiques de manière moderne et interactive.",
+            categories: [
+                "Puissances",
+                "Équations",
+                "Inégalités",
+                "Produits Remarquables",
+                "Polynômes",
+                "Racines Carrées",
+                "Factorisation",
+                "Fonctions Linéaires"
+            ]
+        },
+        "es": {
+            title: "Potencias",
+            nextBtn: "Siguiente",
+            restartBtn: "Reiniciar",
+            aboutMe: "Sobre Mí",
+            contactMe: "Contáctame",
+            footerRights: "&copy; 2024 Wiskunde Majeed. Todos los derechos reservados.",
+            overlayContenth2: "Sobre Mí",
+            overlayContentp: "Hola, mi nombre es Majeed. Me apasionan las matemáticas y la tecnología, y creé este sitio para ayudar a otros a aprender conceptos matemáticos de una manera moderna e interactiva.",
+            categories: [
+                "Potencias",
+                "Ecuaciones",
+                "Desigualdades",
+                "Productos Notables",
+                "Polinomios",
+                "Raíces Cuadradas",
+                "Factorización",
+                "Funciones Lineales"
+            ]
+        },
+        "it": {
+            title: "Potenze",
+            nextBtn: "Prossimo",
+            restartBtn: "Ricomincia",
+            aboutMe: "Chi Sono",
+            contactMe: "Contattami",
+            footerRights: "&copy; 2024 Wiskunde Majeed. Tutti i diritti riservati.",
+            overlayContenth2: "Chi Sono",
+            overlayContentp: "Ciao, mi chiamo Majeed. Sono appassionato di matematica e tecnologia, e ho creato questo sito per aiutare gli altri a imparare i concetti matematici in modo moderno e interattivo.",
+            categories: [
+                "Potenze",
+                "Equazioni",
+                "Disuguaglianze",
+                "Prodotti Notevoli",
+                "Polinomi",
+                "Radici Quadrate",
+                "Fattorizzazione",
+                "Funzioni Lineari"
+            ]
+        },
+        "ar": {
+            title: "القوى",
+            nextBtn: "التالي",
+            restartBtn: "إعادة البدء",
+            aboutMe: "عني",
+            contactMe: "اتصل بي",
+            footerRights: "&copy;ماجد. جميع الحقوق 2024 Wiskunde Majeed.",
+            overlayContenth2: "عني",
+            overlayContentp: "مرحبًا، اسمي ماجد. أنا شغوف بالرياضيات والتكنولوجيا، وقد أنشأت هذا الموقع لمساعدة الآخرين على تعلم المفاهيم الرياضية بطريقة حديثة وتفاعلية.",
+            categories: [
+                "القوى",
+                "المعادلات",
+                "المتباينات",
+                "المنتجات الجديرة بالملاحظة",
+                "المتعددات الحدود",
+                "الجذور التربيعية",
+                "التحليل إلى عوامل",
+                "الدوال الخطية"
+            ]
+        },
+        "ch": {
+            title: "幂次",
+            nextBtn: "下一个",
+            restartBtn: "重新开始",
+            aboutMe: "关于我",
+            contactMe: "联系我",
+            footerRights: "&copy; 2024 Wiskunde Majeed. 保留所有权利。",
+            overlayContenth2: "关于我",
+            overlayContentp: "你好，我叫Majeed。我对数学和技术充满热情，建立这个网站是为了帮助他人以现代和互动的方式学习数学概念。",
+            categories: [
+                "幂次",
+                "方程",
+                "不等式",
+                "显著乘积",
+                "多项式",
+                "平方根",
+                "因式分解",
+                "线性函数"
+            ]
         }
     };
+
+  
     
     function setLanguage(lang) {
         const selectedLanguage = languages[lang];
+        
+        // Update teksten
         document.getElementById('category-title').textContent = selectedLanguage.title;
         document.getElementById('next-btn').textContent = selectedLanguage.nextBtn;
         document.getElementById('restart-btn').textContent = selectedLanguage.restartBtn;
-        localStorage.setItem('language', lang);
+        document.getElementById('about-me-btn').textContent = selectedLanguage.aboutMe;
+        document.getElementById('contact-me-btn').textContent = selectedLanguage.contactMe;
+        document.querySelector('footer .footer-content p').innerHTML = selectedLanguage.footerRights;
+        document.title = selectedLanguage.title;
+    
+        // Update de overlay-inhoud
+        document.getElementById('about-me-btn').innerHTML = `<i class="fas fa-user"></i> ${selectedLanguage.aboutMe}`;
+        document.getElementById('contact-me-btn').innerHTML = `<i class="fas fa-envelope"></i> ${selectedLanguage.contactMe}`;
+    
+        // Update de categorieën in het zijmenu
+        const menuItems = document.querySelectorAll('.side-menu li');
+        menuItems.forEach((item, index) => {
+            item.querySelector('.menu-text').textContent = selectedLanguage.categories[index];
+        });
     }
+    
 
     document.getElementById('language-selector').addEventListener('change', (e) => {
-        setLanguage(e.target.value);
+        const selectedLang = e.target.value;
+        setLanguage(selectedLang);
+        localStorage.setItem('language', selectedLang); 
     });
 
-    document.addEventListener('DOMContentLoaded', () => {
-        const savedLang = localStorage.getItem('language') || 'nl';
-        setLanguage(savedLang);
-    });
+    const savedLang = localStorage.getItem('testing') || 'nl';
 
     function loadCategory(category) {
         currentCategory = category;
@@ -434,11 +632,21 @@ document.addEventListener('DOMContentLoaded', () => {
     colorPicker.addEventListener('input', (event) => {
         const selectedColor = event.target.value;
         document.documentElement.style.setProperty('--primary-color', selectedColor);
+        localStorage.setItem('primaryColor', selectedColor); // Kleur opslaan in LocalStorage
     });
 
-    resetColorsBtn.addEventListener('click', () => {
-        document.documentElement.style.setProperty('--primary-color', '#3168ff');
+    resetButton.addEventListener('click', () => {
+        const defaultColor = '#3168ff';
+        document.documentElement.style.setProperty('--primary-color', defaultColor);
+        localStorage.removeItem('primaryColor');
+
+        const defaultLanguage = 'nl';
+        setLanguage(defaultLanguage);
+        localStorage.removeItem('language');
     });
+
+    const savedColor = localStorage.getItem('primaryColor') || '#3168ff';
+    document.documentElement.style.setProperty('--primary-color', savedColor);
 
     function handleMouseLeave(event) {
         const { left, right, top, bottom } = rgbButton.getBoundingClientRect();
@@ -513,4 +721,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     loadCategory(currentCategory);
+    setLanguage(savedLang);
 });
